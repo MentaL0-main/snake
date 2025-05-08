@@ -2,7 +2,7 @@
 
 Default snake game.
 
-for build on Linux (clang):
+for build and run on Linux (clang):
 ```
 git clone https://github.com/MentaL0-main/snake.git
 cd snake
