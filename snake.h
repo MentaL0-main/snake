@@ -59,6 +59,8 @@ private:
     void renderFoods();
     void initFoods();
 
+    void showScoreOnTitle();
+
     SDL_Point getRandomTile();
 
 };

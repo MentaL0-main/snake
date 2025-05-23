@@ -62,6 +62,7 @@ void Snake::mainloop() {
         }
 
         renderFoods();
+        showScoreOnTitle();
         snakeRender();
         snakeMovement();
 
@@ -269,7 +270,6 @@ void Snake::snakeShow() {
 }
 
 void Snake::showGameOverScene() {
-    
     SDL_Delay(500);
 
     dir = STOP;
@@ -278,7 +278,6 @@ void Snake::showGameOverScene() {
     std::cout << "score: " << score << std::endl;
 
     snakeReset();
-
 }
 
 SDL_Point Snake::getRandomTile() {
@@ -403,4 +402,11 @@ void Snake::initFoods() {
 
         foods.push_back({position.x, position.y});
     }
+}
+
+void Snake::showScoreOnTitle() {
+    std::string newTitle = 
+        "Snake (" + std::to_string(this->score) + ")";
+
+    SDL_SetWindowTitle(this->window, newTitle.c_str());
 }
