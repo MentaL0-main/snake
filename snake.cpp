@@ -270,7 +270,7 @@ void Snake::snakeShow() {
 
 void Snake::showGameOverScene() {
     
-    SDL_Delay(5000);
+    SDL_Delay(500);
 
     dir = STOP;
 
