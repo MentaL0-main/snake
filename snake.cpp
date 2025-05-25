@@ -33,11 +33,6 @@ void Snake::init() {
         headPosX,
         headPosY
     });
-    
-    body.push_back({
-        headPosX + rect.x,
-        headPosY
-    });
 
     linesColor = {
         Uint8(random() % 255),
