@@ -17,8 +17,8 @@ void Snake::init() {
     tileNum = 20;
 
     setargc:
-    foodsNumber = 130;
-
+    foodsNumber = random() % 25;
+    
     rect = {
         width / tileNum,
         height / tileNum
