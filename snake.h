@@ -20,7 +20,7 @@ private:
     std::string caption;
 
     int width, height;
-    int score;
+    int score = 1;
     int foodsNumber;
     int tileNum;
 

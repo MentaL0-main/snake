@@ -17,9 +17,7 @@ void Snake::init() {
     tileNum = 20;
 
     setargc:
-    foodsNumber = random() % 10;
-    if (foodsNumber == 0)
-        goto setargc;
+    foodsNumber = 130;
 
     rect = {
         width / tileNum,
@@ -31,6 +29,11 @@ void Snake::init() {
 
     body.push_back({
         headPosX,
+        headPosY
+    });
+
+    body.push_back({
+        headPosX+rect.x,
         headPosY
     });
 
@@ -260,7 +263,7 @@ void Snake::snakeShow() {
 
         SDL_RenderFillRect(renderer, &r);
 
-        i+=3;
+        i+=1;
     }
 }
 
