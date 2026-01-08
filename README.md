@@ -18,7 +18,7 @@
 ## 📥 Сборка и запуск
 ### Arch linux 
 ```shell
-sudo pacman -S sdl2 clang
+sudo pacman -S sdl2 clang git
 git clone https://github.com/mental0-main/snake.git
 cd snake
 clang++ -o snake_game *.cpp -lSDL2
@@ -27,7 +27,7 @@ clang++ -o snake_game *.cpp -lSDL2
 
 ### Debian linux 
 ```shell
-sudo apt install libsdl2-dev clang
+sudo apt install libsdl2-dev clang git
 git clone https://github.com/mental0-main/snake.git
 cd snake
 clang++ -o snake_game *.cpp -lSDL2
