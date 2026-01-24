@@ -4,48 +4,48 @@
   <img src="screenshots/screenshot.png" alt="Snake Gameplay" width="600px" style="border-radius: 10px; border: 2px solid #3a7bd5;">
 </p>
 
-## ✨ Особенности
-- 🚀 Высокая производительность: Минимальное потребление ресурсов благодаря SDL2.
-- 🎮 Плавное управление: Отзывчивый ввод без задержек.
-- 📏 Модульная архитектура: Код легко расширять (добавлять уровни, скины или врагов).
+## Features
+- High performance: Minimal resource consumption thanks to SDL2.
+- Smooth control: Responsive input without delay.
+- Modular architecture: The code is easy to expand (add levels, skins or enemies).
 
-## 🛠 Требования
-Для сборки и запуска вам понадобятся:
-- Компилятор: GCC 7+, Clang 5+ или MSVC 2017+.
-- Библиотеки: 
+## Requirements
+To build and launch you will need:
+- Compiler: GCC 7+, Clang 5+ or MSVC 2017+.
+- Libraries: 
   - SDL2 (Core library)
 
-## 📥 Сборка и запуск
+## Assembly and launch
 ### Arch linux 
-```shell
+`shell
 sudo pacman -S sdl2 clang git
 git clone https://github.com/mental0-main/snake.git
 cd snake
 clang++ -o snake_game *.cpp -lSDL2
 ./snake_game
-```
+`
 
 ### Debian linux 
-```shell
+`shell
 sudo apt install libsdl2-dev clang git
 git clone https://github.com/mental0-main/snake.git
 cd snake
 clang++ -o snake_game *.cpp -lSDL2
 ./snake_game
-```
+`
 
-### 🪟 Windows
-1. Скачайте SDL2 Development Libraries с [официального сайта](https://www.libsdl.org/).
-2. Подключите пути к include и lib в вашей IDE (Visual Studio, CLion).
-3. Убедитесь, что SDL2.dll находится рядом с .exe файлом.
+### Windows
+1. Download the SDL2 Development Libraries from [official site] (https://www.libsdl.org/).
+2. Connect paths to include and lib in your IDE (Visual Studio, CLion).
+3. Make sure that the SDL2.dll is next to the .exe file.
 
-| Клавиша | Действие |
+| Key | Action |
 | :--- | :--- |
-| W / Up | Движение вверх |
-| S / Down | Движение вниз |
-| A / Left | Движение влево |
-| D / Right | Движение вправо |
-| Esc | Выход из игры |
+| W / Up | Move up |
+| S / Down | Moving down |
+| A / Left | Movement to the left |
+| D / Right | Rightward |
+| Esc | Exit the game |
 
-## 📜 Лицензия
-Этот проект распространяется под лицензией MIT. 
+## License
+This project is licensed under the MIT license. 
