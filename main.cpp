@@ -1,6 +1,9 @@
 #include "snake.h"
 
-int main() {
+#include <iostream>
+#include <exception>
+
+int main(int argc, char* argv[]) {
     Snake snake;
 
     try {

@@ -1,9 +1,9 @@
 #include "snake.h"
 
-void Snake::run(int w, int h, std::string c) {
-    this->width = w;
-    this->height = h;
-    this->caption = c;
+void Snake::run(int width, int height, std::string caption) {
+    width_ = width;
+    height_ = height;
+    caption_ = caption;
 
     init();
     mainloop();
@@ -20,8 +20,8 @@ void Snake::init() {
     foodsNumber = (random() % 24) + 1;
     
     rect = {
-        width / tileNum,
-        height / tileNum
+        width_ / tileNum,
+        height_ / tileNum
     };
 
     int headPosX = rect.x * 5;
@@ -45,8 +45,8 @@ void Snake::init() {
     };
 
     initFoods();
-    initWindow(caption, width, height);
-    initRenderer(window);
+    initWindow(caption_, width_, height_);
+    initRenderer(window_);
 }
 
 void Snake::mainloop() {
@@ -64,99 +64,99 @@ void Snake::mainloop() {
         snakeRender();
         snakeMovement();
 
-        SDL_SetRenderDrawColor(renderer, 4, 4, 4, 255);
-        SDL_RenderClear(renderer);
+        SDL_SetRenderDrawColor(renderer_, 4, 4, 4, 255);
+        SDL_RenderClear(renderer_);
 
-        SDL_SetRenderDrawColor(renderer, 160, 0, 0, 255);
+        SDL_SetRenderDrawColor(renderer_, 160, 0, 0, 255);
         showFoods();
 
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+        SDL_SetRenderDrawColor(renderer_, 0, 255, 0, 255);
         snakeShow();
 
-        SDL_SetRenderDrawColor(renderer, 20, 20, 20, 255);
+        SDL_SetRenderDrawColor(renderer_, 20, 20, 20, 255);
 
         showGrid();
 
-        SDL_RenderPresent(renderer);
+        SDL_RenderPresent(renderer_);
 
         SDL_Delay(65);
     }
 }
 
 void Snake::cleanup() {
-    SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
+    if (window_) SDL_DestroyWindow(window_);
+    if (renderer_) SDL_DestroyRenderer(renderer_);
     SDL_Quit();
 }
 
-void Snake::initWindow(std::string cap, int w, int h) {
-    window = SDL_CreateWindow(
-        cap.c_str(),
+void Snake::initWindow(std::string caption, int width, int height) {
+    window_ = SDL_CreateWindow(
+        caption.c_str(),
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        w,
-        h,
+        width,
+        height,
         SDL_WINDOW_SHOWN
     );
 
-    if (!window)
+    if (!window_)
         throw std::runtime_error(SDL_GetError());
 }
 
-void Snake::initRenderer(SDL_Window *win) {
-    renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
+void Snake::initRenderer(SDL_Window* window) {
+    renderer_ = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    if (!renderer)
+    if (!renderer_)
         throw std::runtime_error(SDL_GetError());
 }
 
 void Snake::showGrid() {
-    for (int x = 1; x < rect.x*width; ++x) {
+    for (int x = 1; x < rect.x*width_; ++x) {
         SDL_RenderDrawLine(
-            renderer,
+            renderer_,
             x*rect.x, 0,
-            x*rect.x, height
+            x*rect.x, height_
         );
     }
 
-    for (int y = 1; y < rect.y*height; ++y) {
+    for (int y = 1; y < rect.y*height_; ++y) {
         SDL_RenderDrawLine(
-            renderer,
+            renderer_,
             0, y*rect.y,
-            width, y*rect.y
+            width_, y*rect.y
         );
     }
 
     SDL_RenderDrawLine(
-        renderer,
+        renderer_,
         0,
         0,
-        width,
+        width_,
         0
     );
 
     SDL_RenderDrawLine(
-        renderer,
+        renderer_,
         0,
         0,
         0,
-        height
+        height_
     );
 
     SDL_RenderDrawLine(
-        renderer,
-        width-1,
+        renderer_,
+        width_-1,
         0,
-        height-1,
-        width-1
+        height_-1,
+        width_-1
     );
 
     SDL_RenderDrawLine(
-        renderer,
+        renderer_,
         0,
-        height-1,
-        width-1,
-        height-1
+        height_-1,
+        width_-1,
+        height_-1
     );
 }
 
@@ -178,15 +178,15 @@ void Snake::snakeMovement() {
 
 void Snake::snakeRender() {
     if (body[0].x < 0)
-        body[0].x = width - rect.x;
+        body[0].x = width_ - rect.x;
 
-    else if (body[0].x >= width)
+    else if (body[0].x >= width_)
         body[0].x = 0;
 
     else if (body[0].y < 0)
-        body[0].y = height - rect.y;
+        body[0].y = height_ - rect.y;
 
-    else if (body[0].y >= height)
+    else if (body[0].y >= height_)
         body[0].y = 0;
 
     for (int i = 1; i < body.size(); ++i) {
@@ -238,7 +238,7 @@ void Snake::snakeShow() {
 
     SDL_Color currentColor;
     SDL_GetRenderDrawColor(
-        renderer,
+        renderer_,
         &currentColor.r,
         &currentColor.g,
         &currentColor.b,
@@ -247,7 +247,7 @@ void Snake::snakeShow() {
 
     for (auto& segment : body) {
         SDL_SetRenderDrawColor(
-            renderer,
+            renderer_,
             currentColor.r,
             currentColor.g-i,
             currentColor.b,
@@ -261,7 +261,7 @@ void Snake::snakeShow() {
             rect.y
         };
 
-        SDL_RenderFillRect(renderer, &r);
+        SDL_RenderFillRect(renderer_, &r);
 
         i+=1;
     }
@@ -316,7 +316,7 @@ void Snake::showFoods() {
             rect.y
         };
         
-        SDL_RenderFillRect(renderer, &rectr);
+        SDL_RenderFillRect(renderer_, &rectr);
     }
 }
 
@@ -406,5 +406,5 @@ void Snake::showScoreOnTitle() {
     std::string newTitle = 
         "Snake (" + std::to_string(this->score) + ")";
 
-    SDL_SetWindowTitle(this->window, newTitle.c_str());
+    SDL_SetWindowTitle(window_, newTitle.c_str());
 }

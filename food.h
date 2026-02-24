@@ -5,21 +5,20 @@
 
 class Food {
 public:
-    Food(int px, int py)
-    : x{px}, y{py} {}
+    Food(int x, int y)
+    : x_{x}, y_{y} {}
 
     void setPosition(int x, int y) {
-        this->x = x;
-        this->y = y;
+        x_ = x;
+        y_ = y;
     }
 
     std::vector<int> getPosition() {
-        return {x, y};
+        return {x_, y_};
     }
 
 private:
-    int x, y;
-
+    int x_, y_;
 };
 
 #endif // FOOD_H

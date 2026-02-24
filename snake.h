@@ -11,20 +11,20 @@
 
 class Snake {
 public:
-    void run(int w, int h, std::string c);
+    void run(int width, int height, std::string caption);
 
 private:
-    SDL_Window *window;
-    SDL_Renderer *renderer;
+    SDL_Window* window_{};
+    SDL_Renderer* renderer_{};
 
-    std::string caption;
+    std::string caption_{};
 
-    int width, height;
-    int score = 1;
-    int foodsNumber;
-    int tileNum;
+    int width_{}, height_{};
+    int score{1};
+    int foodsNumber{};
+    int tileNum{};
 
-    short dir;
+    short dir{};
     
     enum {
         STOP = 0,
@@ -34,18 +34,18 @@ private:
         DOWN
     };
 
-    SDL_Rect rect;
-    SDL_Color linesColor;
+    SDL_Rect rect{};
+    SDL_Color linesColor{};
 
-    std::deque<SDL_Point> body;
-    std::deque<Food> foods;
+    std::deque<SDL_Point> body{};
+    std::deque<Food> foods{};
 
     void init();
     void mainloop();
     void cleanup();
 
-    void initWindow(std::string cap, int w, int h);
-    void initRenderer(SDL_Window *win);
+    void initWindow(std::string caption, int width, int height);
+    void initRenderer(SDL_Window* window);
 
     void snakeMovement();
     void snakeRender();
