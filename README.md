@@ -17,22 +17,22 @@ To build and launch you will need:
 
 ## Assembly and launch
 ### Arch linux 
-`shell
+```shell
 sudo pacman -S sdl2 clang git
 git clone https://github.com/mental0-main/snake.git
 cd snake
 clang++ -o snake_game *.cpp -lSDL2
 ./snake_game
-`
+```
 
 ### Debian linux 
-`shell
+```shell
 sudo apt install libsdl2-dev clang git
 git clone https://github.com/mental0-main/snake.git
 cd snake
 clang++ -o snake_game *.cpp -lSDL2
 ./snake_game
-`
+```
 
 ### Windows
 1. Download the SDL2 Development Libraries from [official site] (https://www.libsdl.org/).
